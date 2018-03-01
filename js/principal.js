@@ -1,6 +1,11 @@
 {
 	$(function(){
-		//$("#cartel").effect("slide", 3000).toggle("explode", 1000, mostrarPagina);
+		if(sessionStorage.cartel === "true"){
+			mostrarPagina();
+			$("#cartel").addClass("ocultarPagina");
+		}else{
+			$("#cartel").effect("slide", 3000).toggle("explode", 1000, mostrarPagina);
+		}
 		
 		escribirEnDOM($("#lunes"), "Lunes");
 
@@ -85,6 +90,8 @@
 	function mostrarPagina(){
 		$("header").removeClass("ocultarPagina");
 		$("#tabs").removeClass("ocultarPagina");
+		$("footer").removeClass("ocultarPagina");
+		sessionStorage.cartel = "true";
 	}
 
 }
