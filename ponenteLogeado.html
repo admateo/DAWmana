@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>Mateo Cuenca David</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="js/jquery-ui/jquery-ui.min.css">
+		<link rel="stylesheet" href="js/jquery-ui/jquery-ui.structure.min.css">
+		<link rel="stylesheet" href="js/jquery-ui/jquery-ui.theme.min.css">
+		<link rel="stylesheet" type="text/css" href="css/stylePonenteLogeado.css">
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery-ui/jquery-ui.min.js"></script>	
+		<script type="text/javascript" src="js/ponenteLogeado.js"></script>
+		<script type="text/javascript" src="js/datepicker-es.js"></script>
+	</head>
+	<body>
+		<noscript>Para usar esta página es necesario activar JavaScript</noscript>
+		<header>
+			<h1>DAWmana 2018</h1>
+			<ul>
+				<li id="cerrar_sesion">Cerrar sesion</li>
+			</ul>
+		</header>
+		<div id="tabs" >
+			<ul>
+			    <li id="Informacion_personal"><a href="#informacion_personal">Informacion personal</a></li>
+			    <li id="Ponencias"><a href="#ponencias">Ponencias</a></li>
+			</ul>
+			<div id="informacion_personal">
+				<div id="formulario">
+					<div>
+						<label>Nombre: </label>
+						<input type="text" id="nombre" placeholder="David">
+						<i id="errorNombre">*</i>
+					</div>				
+					<div>
+						<label>Apellidos: </label>
+						<input type="text" id="apellidos" placeholder="Mateo Cuenca">
+						<i id="errorApellidos">*</i>
+					</div>
+					<div>
+						<label>Empresa: </label>
+						<input type="text" id="empresa" placeholder="dobbus">
+						<i id="errorEmpresa">*</i>
+					</div>						
+					<div>
+						<label>Patrocinio: </label>
+						<input type="checkbox" id="patrocinio">
+					</div>
+					<div>
+						<label for="from">Desde</label>
+						<input type="text" id="fechaDesde" name="from" readonly>
+					</div>
+					<div>
+						<label for="to">hasta</label>
+						<input type="text" id="fechaHasta" name="to" readonly>
+					</div>	
+					<div>
+						<label>Observaciones: </label>
+						<textarea id="observaciones" placeholder="Aqui puedes escribir sobre alguna recomendacion..."></textarea>
+					</div>
+					<div id="cajaRegistro">
+						<button id="actualizar">Actualizar</button>
+					</div>			
+				</div>
+				<div id="dialog-message" title="Información">
+					<p>Los datos se han actualizado correctamente.</p>
+				</div>
+			</div>
+			<div id="ponencias">
+				<div id="formulario">
+					<div>
+						<label>Actividad: </label>
+						<input type="text" id="actividad" placeholder="Charla sobre bots">
+						<i id="errorActividad">*</i>
+					</div>				
+					<div>
+						<label>Descripción breve: </label>
+						<textarea id="descBreve" placeholder="Hablaremos sobre como crear un bot en telegram"></textarea>
+						<i id="errorDescBreve">*</i>
+					</div>
+					<div>
+						<label>Descripción extensa: </label>
+						<textarea id="descExtensa" placeholder="Hablaremos sobre como crear un bot en telegram y como usarlos para enriquecer nuestra aplicación etc..."></textarea>
+						<i id="errorDescExtensa">*</i>
+					</div>						
+					<div>
+						<label>Imagen: </label>
+						<input type="text" id="imagen">
+						<i id="errorImagen">*</i>
+					</div>
+					<div>
+						<label>Material para el ponente: </label>
+						<textarea id="materialPonente" placeholder="Proyector, Conexión WIFI, Conexión Ethernet, Software necesario..."></textarea>
+					</div>	
+					<div>
+						<label>Material para los asistentes: </label>
+						<textarea id="materialAsistente" placeholder="Equipo, Windows/Linux, Eclipse, Navegador, Editor de textos..."></textarea>
+					</div>
+					<div>
+						<label>Nº asistentes: </label>
+						<input type="text" id="numAsistentes" placeholder="20">
+						<i id="errorNumAsistentes">*</i>
+					</div>
+					<div id="cajaRegistro">
+						<button id="registrar">Registrar</button>
+					</div>			
+				</div>
+				<div id="dialog-message-actividad" title="Información">
+					<p>Se han registrado los datos de la actividad correctamente.</p>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<img src="img/uco.png">
+			<img src="img/La_zona_pequeño.png">
+			<img src="img/GrayHats_pequeño.png">
+			<img src="img/Innovation_group_pequeno.png">
+		</footer>
+	</body>
+</html>

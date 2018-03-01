@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>Mateo Cuenca David</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="js/jquery-ui/jquery-ui.min.css">
+		<link rel="stylesheet" href="js/jquery-ui/jquery-ui.structure.min.css">
+		<link rel="stylesheet" href="js/jquery-ui/jquery-ui.theme.min.css">
+		<link rel="stylesheet" type="text/css" href="css/styleRegistro.css">
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery-ui/jquery-ui.min.js"></script>	
+		<script type="text/javascript" src="js/registro.js"></script>
+	</head>
+	<body>
+		<noscript>Para usar esta página es necesario activar JavaScript</noscript>
+		<header>
+			<h1>DAWmana 2018</h1>
+			<ul>
+				<li id="inicio">Inicio</li>
+				<li id="ponentes">Ponentes</li>
+				<li id="registro">Registro asistentes</li>
+				<li id="carteles">Carteles</li>
+				<li id="login">Login</li>
+			</ul>
+		</header>
+		<section>
+			<div id="formulario">
+				<div>
+					<label>Nombre: </label>
+					<input type="text" id="nombre" placeholder="David">
+					<i id="errorNombre">*</i>
+				</div>				
+				<div>
+					<label>Apellidos: </label>
+					<input type="text" id="apellidos" placeholder="Mateo Cuenca">
+					<i id="errorApellidos">*</i>
+				</div>						
+				<div>
+					<label>DNI: </label>
+					<input type="text" id="dni" placeholder="12345678Z">
+					<i id="errorDni">*</i>
+				</div>
+				<div>
+					<label>Email: </label>
+					<input type="text" id="email" placeholder="prueba@gmail.com">
+					<i id="errorEmail">*</i>
+				</div>	
+				<div>
+					<label>Procedencia: </label>
+					<select id="procedencia">
+						<option value="instituto">Instituto</option>
+						<option value="universidad">Universidad</option>
+						<option value="empresa">Empresa</option>
+					</select>
+				</div>
+				<div id="cajaRegistro">
+					<button id="registrarse">Registrarse</button>
+				</div>			
+			</div>
+			<div id="dialog-message" title="Información">
+				<p>Te has registrado exitosamente.</p>
+			</div>
+		</section>
+		<footer>
+			<img src="img/uco.png">
+			<img src="img/La_zona_pequeño.png">
+			<img src="img/GrayHats_pequeño.png">
+			<img src="img/Innovation_group_pequeno.png">
+		</footer>
+	</body>
+</html>

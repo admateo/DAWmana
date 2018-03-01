@@ -1,0 +1,159 @@
+@font-face {
+	font-family: Kaushan;
+	src: url(../font/KaushanScript-Regular.ttf);
+}
+
+@font-face {
+	font-family: SourceSansPro;
+	src: url(../font/SourceSansPro-Regular.ttf);
+}
+
+@font-face
+{
+   font-family: "Sosa";
+   src: url("../font/sosa-regular-webfont.eot");
+   src: url('../font/sosa-regular-webfont.eot?#iefix') format('embedded-opentype'),
+        url("../font/sosa-regular-webfont.woff") format("woff"),
+        url("../font/sosa-regular-webfont.ttf") format("truetype"),
+        url("../font/sosa-regular-webfont.svg") format("svg");
+}
+
+body{
+	margin: 0;
+	background-color: #FAFAFA;
+	font-family: SourceSansPro;
+}
+
+header{
+	background-color: #212121;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	box-shadow: 1px 2px 2px black;
+}
+
+h1{
+	font-family: Kaushan;
+	letter-spacing: 1px;
+	margin: 0;
+	color: white;
+	margin-right: 1rem;
+	padding-left: 1rem;
+	padding-top: 9px;
+}
+
+header ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+header ul li{
+	color: white;
+	padding: 20px;
+	text-decoration: none;
+}
+
+header ul li:hover{
+	background-color: #000000;
+	cursor: pointer;
+}
+
+#contenedorCartel{
+	text-align: center;
+	margin: 0 auto;
+}
+
+#cartel{
+	height: 100vh;
+	z-index: 100;
+}
+
+.ocultarPagina{
+	display: none;
+}
+
+#tabs{
+	margin-top: 20px;
+	border: none;
+}
+
+#tabs ul li a{
+	outline: none;
+}
+
+#tabs div article{
+	border-bottom: 1px solid #E0E0E0;
+	display: flex;
+}
+
+#tabs div article img{
+	margin: 15px 0;
+	margin-right: 30px;
+	height: 150px;
+}
+
+#tabs div article p{
+	color: rgba(0,0,0,.57);
+}
+
+#tabs div article h2{
+	text-shadow: 2px 2px 2px rgba(150, 150, 150, 1);
+}
+
+#tabs div article span{
+	color: black;
+	font-family: Sosa;
+	font-size: 19px;
+}
+
+section{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+}
+
+section article{
+	border: 1px solid;
+	width: 235px;
+	margin: 15px 15px;
+	background-color: #FFFFFF;
+	box-shadow: 2px 2px 3px;
+	transition: all 0.4s ease;
+}
+
+section article:hover{
+	transform: scale(1.01);
+}
+
+section article img{
+	height: 235px;
+}
+
+section article p:first-child{
+	margin-top:0;
+	padding: 0;
+}
+
+section article p{
+	padding: 0 10px;
+}
+
+
+span{
+	font-weight: bold;
+}
+
+footer{
+	padding: 1px;
+	padding-left: 40px;
+	background-color: #3F51B5;
+	box-shadow: 1px 0 2px black;
+}
+
+footer img{
+	height: 60px;
+	padding: 10px;
+}
