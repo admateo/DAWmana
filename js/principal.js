@@ -10,6 +10,7 @@
 		escribirEnDOM($("#lunes"), "Lunes");
 
 		$( "#tabs" ).tabs();
+		$( document ).tooltip();
 
 	    $("#tabs ul li").one("click", obtenerDato);
 

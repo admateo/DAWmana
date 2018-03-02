@@ -60,6 +60,7 @@
 		$.datepicker.setDefaults($.datepicker.regional["es"]);
 		let dateFormat = "dd/mm/yy",
 	  		from = $( "#fechaDesde" ).datepicker({
+	  			showAnim: "drop",
 	        	changeMonth: true,
 	        	numberOfMonths: 1,
 	        	minDate: "29/01/2018",
@@ -68,6 +69,7 @@
 	   			to.datepicker( "option", "minDate", getDate( this ));
 	 		}),
 	    	to = $( "#fechaHasta" ).datepicker({
+	    		showAnim: "drop",
 		        changeMonth: true,
 		        numberOfMonths: 1,
 		        minDate: "29/01/2018",
