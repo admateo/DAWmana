@@ -1,113 +1,3 @@
-{
-	let $nombre;
-	let $errorNombre;
-	let $apellidos;
-	let $errorApellidos;
-	let $empresa;
-	let $errorEmpresa;
-
-	let $actividad;
-	let $errorActividad;
-	let $descBreve;
-	let $errorDescBreve;
-	let $descExtensa;
-	let $errorDescExtensa;
-	let $imagen;
-	let $errorImagen;
-	let $materialPonente;
-	let $materialAsistente;
-	let $numAsistentes;
-	let $errorNumAsistentes;
-
-	const REGEXPNOMBRE = /^([a-zA-ZÀ-ÿ]{3,}\s*)+$/i;
-	const REGEXPACTIVIDAD = /^([a-zA-ZÀ-ÿ]+\s*)+$/i;
-	const REGEXPDESCBREVE = /^(.){20,40}$/i;
-	const REGEXPDESCEXTENSA = /^(.){40,}$/i;
-	const REGEXPAPELLIDOS = /^([a-zA-ZÀ-ÿ]{3,}\s[a-zA-ZÀ-ÿ]{3,})+$/i;
-	const REGEXPNUMEROS = /^\d+$/;
-	const REGEXPURLIMAGEN = /^([A-z\.\-+\d])+(\.|\-)*\.(jpg|jpeg|png)$/;
-
-	$(function(){
-		let $patrocinio = $("#patrocinio");
-		let $fechaDesde = $("#fechaDesde");
-		let $fechaHasta = $("#fechaHasta");
-		let $observaciones = $("#observaciones");	
-		$nombre = $("#nombre");
-		$errorNombre = $("#errorNombre");
-		$apellidos = $("#apellidos");
-		$errorApellidos = $("#errorApellidos");
-		$empresa = $("#empresa");
-		$errorEmpresa = $("#errorEmpresa");
-
-		$actividad = $("#actividad");
-		$errorActividad = $("#errorActividad");
-		$descBreve = $("#descBreve");
-		$errorDescBreve = $("#errorDescBreve");
-		$descExtensa = $("#descExtensa");
-		$errorDescExtensa = $("#errorDescExtensa");
-		$imagen = $("#imagen");
-		$errorImagen = $("#errorImagen");
-		$materialPonente = $("#materialPonente");
-		$materialAsistente = $("#materialAsistente");
-		$numAsistentes = $("#numAsistentes");
-		$errorNumAsistentes = $("#errorNumAsistentes");
-
-		$("#actualizar").on("click", validarActualizarDatos);
-		$("#registrar").on("click", validarRegistroActividad);
-		$("#cerrar_sesion").on("click", cerrarSesion);
-
-		$( "#tabs" ).tabs();
-		$.datepicker.setDefaults($.datepicker.regional["es"]);
-		let dateFormat = "dd/mm/yy",
-	  		from = $( "#fechaDesde" ).datepicker({
-	  			showAnim: "drop",
-	        	changeMonth: true,
-	        	numberOfMonths: 1,
-	        	minDate: "29/01/2018",
-	        	maxDate: "02/02/2018" 
-	   		}).on( "change", function() {
-	   			to.datepicker( "option", "minDate", getDate( this ));
-	 		}),
-	    	to = $( "#fechaHasta" ).datepicker({
-	    		showAnim: "drop",
-		        changeMonth: true,
-		        numberOfMonths: 1,
-		        minDate: "29/01/2018",
-		        maxDate: "02/02/2018" 
-	  		}).on( "change", function() {
-	    		from.datepicker( "option", "maxDate", getDate( this ) );
-			});
-			function getDate( element ) {
-				let date;
-				try {
-					date = $.datepicker.parseDate( dateFormat, $(element).val() );
-				} catch( error ) {
-					date = null;
-				}
-				if($(element).attr("id") === "fechaDesde"){
-					$fechaDesde = date;
-				}else{
-					$fechaHasta = date;
-				}
-				return date;
-			}
-
-		$.getJSON("php/actividades.php?login", function(data) {
-			$.each( data, function( key, value ) {
-				if(value.Usuario === sessionStorage.usuario){
-					$nombre.val(value.Nombre);
-					$apellidos.val(value.Apellidos);
-					$empresa.val(value.Empresa);
-					$patrocinio.prop("checked", value.Patrocinio);
-					$patrocinio.val(value.Patrocinio);
-					$fechaDesde.val(value.FechaDesde);
-					$fechaHasta.val(value.FechaHasta);
-					$observaciones.val(value.Observaciones);
-				}
- 			});
-		});
-	});
-
 	function validarRegExp(regExp, $valor, $variableError){
 		if(!regExp.test($valor.val().trim())){
 			$variableError.html("* Comprueba los datos.").effect("slide", 1500);
@@ -117,9 +7,15 @@
 	}
 
 	function validarActualizarDatos(){
-		validarRegExp(REGEXPNOMBRE, $nombre, $errorNombre);
-		validarRegExp(REGEXPAPELLIDOS, $apellidos, $errorApellidos);
-		validarRegExp(REGEXPNOMBRE, $empresa, $errorEmpresa);
+		let $errorNombre = $("#errorNombre");
+		let $errorApellidos = $("#errorApellidos");
+		let $errorEmpresa = $("#errorEmpresa");
+		let REGEXPNOMBRE = /^([a-zA-ZÀ-ÿ]{3,}\s*)+$/i;
+		let REGEXPAPELLIDOS = /^([a-zA-ZÀ-ÿ]{3,}\s[a-zA-ZÀ-ÿ]{3,})+$/i;
+
+		validarRegExp(REGEXPNOMBRE, $("#nombre"), $errorNombre);
+		validarRegExp(REGEXPAPELLIDOS, $("#apellidos"), $errorApellidos);
+		validarRegExp(REGEXPNOMBRE, $("#empresa"), $errorEmpresa);
 	
 		if($errorNombre.text().length < 3 && $errorApellidos.text().length < 3 && $errorEmpresa.text().length < 3){
 			$( "#dialog-message" ).dialog({
@@ -134,11 +30,23 @@
 	}
 
 	function validarRegistroActividad(){
-		validarRegExp(REGEXPACTIVIDAD, $actividad, $errorActividad);
-		validarRegExp(REGEXPDESCBREVE, $descBreve, $errorDescBreve);
-		validarRegExp(REGEXPDESCEXTENSA, $descExtensa, $errorDescExtensa);
-		validarRegExp(REGEXPNUMEROS, $numAsistentes, $errorNumAsistentes);
-		validarRegExp(REGEXPURLIMAGEN, $imagen, $errorImagen);
+		let REGEXPACTIVIDAD = /^([a-zA-ZÀ-ÿ]+\s*)+$/i;
+		let REGEXPDESCBREVE = /^(.){20,40}$/i;
+		let REGEXPDESCEXTENSA = /^(.){40,}$/i;
+		let REGEXPNUMEROS = /^\d+$/;
+		let REGEXPURLIMAGEN = /^([A-z\.\-+\d])+(\.|\-)*\.(jpg|jpeg|png)$/;
+
+		$errorActividad = $("#errorActividad");
+		$errorDescBreve = $("#errorDescBreve");
+		$errorDescExtensa = $("#errorDescExtensa");
+		$errorNumAsistentes = $("#errorNumAsistentes");
+		$errorImagen = $("#errorImagen");
+		
+		validarRegExp(REGEXPACTIVIDAD, $("#actividad"), $errorActividad);
+		validarRegExp(REGEXPDESCBREVE, $("#descBreve"), $errorDescBreve);
+		validarRegExp(REGEXPDESCEXTENSA, $("#descExtensa"), $errorDescExtensa);
+		validarRegExp(REGEXPNUMEROS, $("#numAsistentes"), $errorNumAsistentes);
+		validarRegExp(REGEXPURLIMAGEN, $("#imagen"), $errorImagen);
 	
 		if($errorActividad.text().length < 3 && $errorDescBreve.text().length < 3 && $errorDescExtensa.text().length < 3 && $errorNumAsistentes.text().length < 3&& $errorImagen.text().length < 3){
 			$( "#dialog-message-actividad" ).dialog({
@@ -149,17 +57,46 @@
 		    		}
 		   		}
 		  	}).effect("bounce", 500);
-		}else{
-			window.scrollTo(0,0);
 		}
 	}
 
-	function cerrarSesion(){
-		sessionStorage.removeItem("usuario");
-		$("body").hide("drop", 700, function(){
-			$.get("index.html", function(data) {
-				$("body").html(data);
+	let initPonenteLogueado = function(){
+		$( "#tabs2" ).tabs();
+		$("#actualizar").on("click", validarActualizarDatos);
+		$("#registrar").on("click", validarRegistroActividad);
+
+		$.datepicker.setDefaults($.datepicker.regional["es"]);
+		let dateFormat = "dd/mm/yy",
+	  		from = $( "#fechaDesde" ).datepicker({
+	  			showAnim: "drop",
+	        	changeMonth: true,
+	        	numberOfMonths: 1,
+	        	minDate: "29/01/2018",
+	        	maxDate: "02/02/2018" 
+	   		}).on( "change", function() {
+	   			to.datepicker( "option", "minDate", $.datepicker.parseDate( dateFormat, $(this).val() ));
+	 		}),
+	    	to = $( "#fechaHasta" ).datepicker({
+	    		showAnim: "drop",
+		        changeMonth: true,
+		        numberOfMonths: 1,
+		        minDate: "29/01/2018",
+		        maxDate: "02/02/2018" 
+	  		}).on( "change", function() {
+	    		from.datepicker( "option", "maxDate", $.datepicker.parseDate( dateFormat, $(this).val() ));
 			});
-		}).show("drop", 700);
+
+		$.getJSON("php/actividades.php?login", function(data) {
+			$.each( data, function( key, value ) {
+				if(value.Usuario === sessionStorage.usuario){
+					$("#nombre").val(value.Nombre);
+					$("#apellidos").val(value.Apellidos);
+					$("#empresa").val(value.Empresa);
+					$("#patrocinio").prop("checked", value.Patrocinio);
+					$("#fechaDesde").val(value.FechaDesde);
+					$("#fechaHasta").val(value.FechaHasta);
+					$("#observaciones").val(value.Observaciones);
+				}
+ 			});
+		});
 	}
-}

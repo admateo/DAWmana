@@ -3,19 +3,29 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Mateo Cuenca David</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="js/jquery-ui/jquery-ui.min.css">
 		<link rel="stylesheet" href="js/jquery-ui/jquery-ui.structure.min.css">
 		<link rel="stylesheet" href="js/jquery-ui/jquery-ui.theme.min.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/lightbox.css">
 		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/jquery-ui/jquery-ui.min.js"></script>	
+		<script src="js/jquery-ui/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/datepicker-es.js"></script>
+		<script type="text/javascript" src="js/lightbox.js"></script>		
+		<script type="text/javascript" src="js/registro.js"></script>
+		<script type="text/javascript" src="js/carteles.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>	
 		<script type="text/javascript" src="js/principal.js"></script>
-		
+		<script type="text/javascript" src="js/ponentes.js"></script>
+		<script type="text/javascript" src="js/ponenteLogeado.js"></script>
+		<script type="text/javascript" src="js/controlador.js"></script>
 	</head>
 	<body>
 		<noscript>Para usar esta página es necesario activar JavaScript</noscript>
+		<div id="contenedorCartel" class="ocultarPagina">
+			<img id="cartel" src="img/cartelSysmanaGrande.jpg">
+		</div>
 		<header class="ocultarPagina">
 			<h1>DAWmana 2018</h1>
 			<ul>
@@ -25,30 +35,10 @@
 				<li id="carteles">Carteles</li>
 				<li id="login">Login</li>
 			</ul>
-		</header>
-		<div id="contenedorCartel">
-			<img id="cartel" src="img/cartelSysmanaGrande.jpg">
-		</div>
-
-		<div id="tabs" class="ocultarPagina">
-			<ul>
-			    <li id="Lunes" title="Actividades del lunes"><a href="#lunes">Lunes</a></li>
-			    <li id="Martes" title="Actividades del martes"><a href="#martes">Martes</a></li>
-			    <li id="Miercoles" title="Actividades del miercoles"><a href="#miercoles">Miercoles</a></li>
-			    <li id="Jueves" title="Actividades del jueves"><a href="#jueves">Jueves</a></li>
-			    <li id="Viernes" title="Actividades del viernes"><a href="#viernes">Viernes</a></li>
-			</ul>
-			<div id="lunes">
-			</div>
-			<div id="martes">
-			</div>
-			<div id="miercoles">
-			</div>
-			<div id="jueves">
-			</div>
-			<div id="viernes">
-			</div>
-		</div>
+		</header>	
+		<main>
+			
+		</main>
 		<footer class="ocultarPagina">
 			<img src="img/uco.png">
 			<img src="img/La_zona_pequeño.png">

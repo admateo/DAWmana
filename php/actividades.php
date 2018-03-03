@@ -251,7 +251,7 @@
 						"Usuario" => "usuario1",
 						"Contraseña" => "Usuario1-"),
 					array("Nombre" => "Miguel Ángel",
-						"Apellidos" => "Arroyo",
+						"Apellidos" => "Arroyo Luque",
 						"Empresa" => "SVT Cloud",
 						"Patrocinio" => true,
 						"FechaDesde" => "30/01/2018",

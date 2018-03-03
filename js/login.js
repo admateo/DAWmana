@@ -1,94 +1,46 @@
-{
-	let $usuario;
-	let $errorUsuario;
-	let $contrasena;
-	let $errorContrasena;
-	let $errorLogin;
-	const REGEXPUSUARIO = /^(\w{6,})$/;
-	const REGEXPCONTRASENA = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@¡#·¬=^/{}\\.+¿!\[\]%*<>_?,;:\-&])([A-Za-z\d$@¡#·<>¬=^/{}\\.+¿!\[\]%*_?,;:\-&]|[^ ]){6,}$/;
-	
-	$(function(){
-		$("#inicio").on("click", inicio);
-		$("#ponentes").on("click", ponentes);
-		$("#registro").on("click", registro);
-		$("#carteles").on("click", carteles);
+let validarLogin = function(){
+	let REGEXPUSUARIO = /^(\w{6,})$/;
+	let REGEXPCONTRASENA = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@¡#·¬=^/{}\\.+¿!\[\]%*<>_?,;:\-&])([A-Za-z\d$@¡#·<>¬=^/{}\\.+¿!\[\]%*_?,;:\-&]|[^ ]){6,}$/;
+	let $usuario = $(".usuario");		
+	let $contrasena = $(".password");
 
-		$usuario = $(".usuario");
-		$errorUsuario = $("#errorUsuario");
-		
-		$contrasena = $(".password");
-		$errorContrasena = $("#errorContrasena");
+	let usuarioValido = validarLoginRegExp(REGEXPUSUARIO, $usuario, $("#errorUsuario"));
+	let contrasenaValida = validarLoginRegExp(REGEXPCONTRASENA, $contrasena, $("#errorContrasena"));
 
-		$errorLogin = $("#errorLogin");
-		
-		$("#logearse").on("click", validarLogin);
-	});
-
-	function validarLogin(){
-		let usuarioValido = validarRegExp(REGEXPUSUARIO, $usuario, $errorUsuario);
-		let contrasenaValida = validarRegExp(REGEXPCONTRASENA, $contrasena, $errorContrasena);
-
-		if(usuarioValido && contrasenaValida){
-			$.getJSON("php/actividades.php?login", function(data) {
-				$.each( data, function( key, value ) {
-					if(value.Usuario === $usuario.val() && value.Contraseña === $contrasena.val()){
-						sessionStorage.usuario = $usuario.val();
-						$("body").hide("drop", 700, function(){
-							$.get("ponenteLogeado.html", function(data) {
-								$("body").html(data);
-							});
-						}).show("drop", 700);
-					}
-	 			});
-			});
-			$errorLogin.css("display", "block").effect("slide", 1000);
-		}
+	if(usuarioValido && contrasenaValida){
+		$.getJSON("php/actividades.php?login", function(data) {
+			$.each( data, function( key, value ) {
+				if(value.Usuario === $usuario.val() && value.Contraseña === $contrasena.val()){
+					sessionStorage.usuario = $usuario.val();
+					$contenedor.hide("drop", 700, function(){
+						$.get("ponenteLogeado.html", function(data) {
+							$contenedor.html(data);
+							initPonenteLogueado();
+						});
+						
+					}).show("drop", 700);
+				}
+ 			});
+		});
+		$("#errorLogin").css("display", "block").effect("slide", 1000);
 	}
+}
 
-	function validarRegExp(regExp, $valor, $variableError){
-		if($valor.val() !== undefined){
-			if(!regExp.test($valor.val().trim())){
-				$variableError.html("* Comprueba los datos.").effect("slide", 1500);
-				return false;
-			}else{
-				$variableError.text("*");
-				return true;
-			}	
-		}else{
+let validarLoginRegExp = function(regExp, $valor, $variableError){
+	if($valor.val() !== undefined){
+		if(!regExp.test($valor.val().trim())){
 			$variableError.html("* Comprueba los datos.").effect("slide", 1500);
 			return false;
+		}else{
+			$variableError.text("*");
+			return true;
 		}	
-	}
+	}else{
+		$variableError.html("* Comprueba los datos.").effect("slide", 1500);
+		return false;
+	}	
+}
 
-	function inicio(){	
-		$("body").hide("drop", 700, function(){
-			$.get("index.html", function(data) {
-				$("body").html(data);
-			});
-		}).show("drop", 700);	
-	}
-
-	function registro(){
-		$("body").hide("drop", 700, function(){
-			$.get("registro.html", function(data) {
-				$("body").html(data);
-			});
-		}).show("drop", 700);
-	}
-
-	function ponentes(){
-		$("body").hide("drop", 700, function(){
-			$.get("ponentes.html", function(data) {
-				$("body").html(data);
-			});
-		}).show("drop", 700);
-	}
-
-	function carteles(){
-		$("body").hide("drop", 700, function(){
-			$.get("carteles.html", function(data) {
-				$("body").html(data);
-			});
-		}).show("drop", 700);
-	}
+let initLogin = function(){	
+	$("#loguearse").on("click", validarLogin);
 }
